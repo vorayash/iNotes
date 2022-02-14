@@ -13,7 +13,7 @@ const NoteState = (props) => {
     const [notes, setNotes] = useState(notesInitial);
     //Get all notes
     const getNotes = async () => {
-        const response = await fetch(`/api/notes/fetchallnotes`, {
+        const response = await fetch(`https://inotebookvorayash.herokuapp.com/api/notes/fetchallnotes`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

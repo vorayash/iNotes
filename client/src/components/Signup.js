@@ -14,7 +14,7 @@ const Signup = () => {
     const {name,email,password} = credential;
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        const response = await fetch(`/api/auth/createuser`, {
+        const response = await fetch(`https://inotebookvorayash.herokuapp.com/api/auth/createuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
