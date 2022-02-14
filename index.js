@@ -1,8 +1,9 @@
+import dotenv from 'dotenv';
 const connectTomongo = require('./db')
 const express = require('express')
 var cors = require('cors')
 var app = express()
-require("dotenv").config();
+dotenv.config();
  
 app.use(cors())
 
