@@ -60,7 +60,7 @@ router.post('/login', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be blank').exists()
 ], async (req, res) => {
-    res.json("hiiii");
+    
     //If there are errors, return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -91,6 +91,7 @@ router.post('/login', [
         success=true;
         // res.json(user);
         res.json({success,authtoken});
+        res.send("hii");
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal server error");
