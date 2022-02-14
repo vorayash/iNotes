@@ -82,6 +82,8 @@ router.post('/login', [
             return res.status(400).json({success, error: "Please login with correct credentials" })
             
         }
+        res.send("hii");
+
         const data = {
             user: {
                 id:user.id
@@ -91,7 +93,6 @@ router.post('/login', [
         success=true;
         // res.json(user);
         res.json({success,authtoken});
-        res.send("hii");
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal server error");
