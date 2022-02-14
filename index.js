@@ -3,6 +3,7 @@ const connectTomongo = require('./db')
 const express = require('express')
 var cors = require('cors')
 var app = express()
+const path = require("path");
 require('dotenv').config();
  
 app.use(cors())

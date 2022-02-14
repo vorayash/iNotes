@@ -35,7 +35,7 @@ const NoteState = (props) => {
             description: description,
             tag: tag
         };
-        const response = await fetch(`http://localhost:5000/api/notes/addnote`, {
+        const response = await fetch(`/api/notes/addnote`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const NoteState = (props) => {
             description: description,
             tag: tag
         };
-        const response = await fetch(`http://localhost:5000/api/notes/updatenote/${id}`, {
+        const response = await fetch(`/api/notes/updatenote/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
