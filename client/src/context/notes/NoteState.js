@@ -13,7 +13,7 @@ const NoteState = (props) => {
     const [notes, setNotes] = useState(notesInitial);
     //Get all notes
     const getNotes = async () => {
-        const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+        const response = await fetch(`/api/notes/fetchallnotes`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const NoteState = (props) => {
 
     //Delete a Note
     const deleteNote = async (id) => {
-        const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+        const response = await fetch(`/api/notes/deletenote/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
