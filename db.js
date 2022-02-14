@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-const mongoURI  = "mongodb://localhost:27017/inotebook?readPreference=primary&appname=MongoDB%20Compass&ssl=false";
+// const mongoURI  = "mongodb://localhost:27017/inotebook?readPreference=primary&appname=MongoDB%20Compass&ssl=false";
+const mongoURI  = "mongodb+srv://vorayash9028:Yash12345@cluster0.cvugq.mongodb.net/mernstack?retryWrites=true&w=majority";
 
 const connectTomongo =()=>{
     mongoose.connect(mongoURI,()=>{
