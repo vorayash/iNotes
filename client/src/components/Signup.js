@@ -13,6 +13,7 @@ const Signup = () => {
     }
     const {name,email,password} = credential;
     const handleSubmit=async(e)=>{
+      console.log("sumite click");
         e.preventDefault();
         const response = await fetch(`https://inotebookvorayash.herokuapp.com/api/auth/createuser`, {
             method: 'POST',
