@@ -3,6 +3,8 @@ import  {useNavigate}  from 'react-router-dom'
 import alertContext from '../context/alert/alertContext';
 
 const Signup = () => {
+  // const host = "http://localhost:5000"
+  const host = "https://inotebookvorayash.herokuapp.com"
   const [credential, setCredential] = useState({name:"",email:"",password:"",cpassword:""});
     let navigate = useNavigate(); 
     const context = useContext(alertContext);
@@ -15,7 +17,7 @@ const Signup = () => {
     const handleSubmit=async(e)=>{
       console.log("sumite click");
         e.preventDefault();
-        const response = await fetch(`https://inotebookvorayash.herokuapp.com/api/auth/createuser`, {
+        const response = await fetch(`/api/auth/createuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
