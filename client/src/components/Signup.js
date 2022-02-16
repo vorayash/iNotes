@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import alertContext from '../context/alert/alertContext';
 
 const Signup = () => {
-  const host = "http://localhost:5000"
-  // const host = "https://inotebookvorayash.herokuapp.com"
+  // const host = "http://localhost:5000"
+  const host = "https://inotebookvorayash.herokuapp.com"
   const [credential, setCredential] = useState({ name: "", email: "", password: "", cpassword: "" });
   const [ischeck, setIscheck] = useState(false);
 

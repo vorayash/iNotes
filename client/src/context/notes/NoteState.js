@@ -4,8 +4,8 @@ import NoteContext from "./noteContext";
 
 
 const NoteState = (props) => {
-    const host = "http://localhost:5000"
-    // const host = "https://inotebookvorayash.herokuapp.com"
+    // const host = "http://localhost:5000"
+    const host = "https://inotebookvorayash.herokuapp.com"
     const notesInitial = []
     
     const context=useContext(alertContext);
