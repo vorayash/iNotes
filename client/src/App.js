@@ -14,23 +14,34 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import alertContext from './context/alert/alertContext';
 import AlertState from './context/alert/AlertState';
+import Sweetalertdemo from './components/Sweetalertdemo';
 
 function App() {
+
+
+
+  window.onunload = () => {
+    if ( document.cookie === 'false' ) {
+      localStorage.removeItem('token');
+    }
+  };
+
+
   return (
     <>
     <AlertState>
       <NoteState>
         <Router>
           <Navbar/>
-          <Alert/>
-          <div className="container">
+    <div className="container">
+          {/* <Alert/> */}
             <Routes>
-              <Route exact path="/" element={<Home />} />
               <Route exact path="/About" element={<About />} />
               <Route exact path="/Login" element={<Login />} />
               <Route exact path="/Signup" element={<Signup />} />
+              <Route exact path="/" element={<Home />} />
             </Routes>
-          </div>
+    </div>
         </Router>
       </NoteState>
     </AlertState>

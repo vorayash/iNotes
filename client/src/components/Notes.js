@@ -8,14 +8,14 @@ import Noteitem from './Noteitem';
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   
+ 
   useEffect(() => {
-    if(localStorage.getItem('token'))
-    {
+    if (localStorage.getItem('token')) {
       getNotes();
     }
-    else{
+    else {
       navigate('/login')
     }
     // eslint-disable-next-line
@@ -34,7 +34,7 @@ const Notes = () => {
   const modalOpen = (currentNote) => {
     ref.current.click();
     setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
-    
+
   }
 
   return (
@@ -72,7 +72,7 @@ const Notes = () => {
               </div>
               <div className="modal-footer">
                 <button type="button" ref={refClose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button disabled={(note.etitle.length<=5||note.edescription.length<=4)} type="button" className="btn btn-primary" onClick={onClickHandler}>Save changes</button>
+                <button disabled={(note.etitle.length <= 5 || note.edescription.length <= 4)} type="button" className="btn btn-primary" onClick={onClickHandler}>Save changes</button>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ const Notes = () => {
 
         <h2>Your Notes</h2>
         <div className="container mx-1">
-        {notes.length===0&& 'No notes to display'}
+          {notes.length === 0 && 'No notes to display'}
         </div>
         {notes.map((note) => {
           return <Noteitem key={note._id} note={note} modalOpen={modalOpen} />
