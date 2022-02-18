@@ -56,7 +56,7 @@ const Login = () => {
         }
     }
     return (
-        <div className="container my-5" id="header">
+        <div className="container" id="header">
             <div className="row">
                 <div className="col-md-6 mx-auto order-2 order-lg-1 d-flex justify-content-center flex-column">
                     <div className="login">
@@ -80,7 +80,7 @@ const Login = () => {
                         </form>
                     </div>
                 </div>
-                <div className="col-lg-6 col-sm-6 mx-auto mb-sm-5 mb-md-0 header-img order-1 order-md-2 d-sm-flex justify-content-center d-md-block">
+                <div className="col-lg-6 col-sm-6 mx-auto mb-sm-5 mb-md-0 header-img order-1 order-md-2 justify-content-center">
                 <img src={bg} className="img-fluid animated" alt="home img" />
                 </div>
             </div>

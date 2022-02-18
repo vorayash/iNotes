@@ -11,8 +11,8 @@ const Noteitem = (props) => {
                 <div className="card-body">
                     <div className="">
                         <h5 className="card-title d-inline">{note.title}</h5>
-                        <i className="far fa-trash-alt mx-2 d-inline" onClick={()=>{deleteNote(note._id)}}></i>
-                        <i className="far fa-edit mx-2 d-inline" onClick={()=>modalOpen(note)}></i>
+                        <i className="far fa-trash-alt mx-2 d-inline" style={{color:"red"}} onClick={()=>{deleteNote(note._id)}}></i>
+                        <i className="far fa-edit mx-2 d-inline" style={{color:"green"}} onClick={()=>modalOpen(note)}></i>
                     </div>
                     <p className="card-text">{note.description}</p>
                 </div>

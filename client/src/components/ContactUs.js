@@ -38,8 +38,9 @@ const ContactUs = () => {
   }
 
   return (
-    <div className="container my-5">
-      <div className="contactus">
+    <>
+    <div className="container" >
+      <div className="contactus" id="header">
         <h2>Contact Us</h2>
         <form onSubmit={submitHandler}>
           <div className="form-row">
@@ -74,7 +75,7 @@ const ContactUs = () => {
         </form>
       </div>
     </div>
-
+</>
   )
 }
 

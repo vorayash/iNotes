@@ -50,7 +50,7 @@ const Signup = () => {
     }
   }
   return (
-    <div className="container my-5" id="header">
+    <div className="container" id="header">
       <div className="row">
         <div className="col-md-6 mx-auto order-2 order-lg-1 d-flex justify-content-center flex-column">
           <div className="signup">

@@ -81,10 +81,11 @@ const Notes = () => {
             </div>
           </div>
         </div>
-
+        
+        <div className="container mt-4 mx-1">
         <h2>Your Notes</h2>
-        <div className="container mx-1">
-          {notes.length === 0 && 'No notes to display'}
+        <hr/>
+          {notes.length === 0 && <h2 style={{color: "rgb(149 149 149)"}}>Please add a note first....</h2>}
         </div>
         {notes.map((note) => {
           return <Noteitem key={note._id} note={note} modalOpen={modalOpen} />

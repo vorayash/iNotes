@@ -1,19 +1,29 @@
 .login,
 .signup,
-.addnote,
+
 .contactus {
   padding: 2rem;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 12px 0 rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 5%);
 }
+
+
+.addnote {
+  background-color: white;
+  padding: 2rem;
+  margin: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 5%);
+}
 .header-img {
-  text-align: right;
+  text-align: center;
 }
 
 .img-fluid {
   max-width: 100%;
   height: auto;
+  
 }
 #header .animated {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;

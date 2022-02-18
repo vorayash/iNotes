@@ -21,10 +21,10 @@ const Navbar = () => {
 
     let location = useLocation();
     return (
-        <div>
-
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
+        <>
+        <div className="navContainer my-5">
+            <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+                <div className="container-fluid container">
                     <Link className="navbar-brand" to="/"><b>iNotes</b></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@ const Navbar = () => {
                                 <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname === "/About" ? "active" : ""}`} to="/About">About</Link>
+                                <Link className={`nav-link ${location.pathname === "/About" ? "active" : ""}`} to="/About">Contact Us</Link>
                             </li>
                         </ul>
                         {!localStorage.getItem('token') ? <>
@@ -46,7 +46,7 @@ const Navbar = () => {
                             <>
                                 <div className="btn-group">
                                     <div type="button" className=" dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <i className="fas fa-user-circle fa-2x"></i>
+                                    <i className="fas fa-user-circle fa-2x" ></i>
                                     </div>
                                     <ul className="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
                                         <li><span className="dropdown-item" >Name: {user.name} </span></li>
@@ -60,6 +60,9 @@ const Navbar = () => {
                 </div>
             </nav>
         </div>
+    <div div className="my-4 d-inline-block"> </div>
+        
+        </>
 
     )
 }

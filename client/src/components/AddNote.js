@@ -18,9 +18,9 @@ const AddNote = () => {
     }
     return (
         <div>
-            <div className="container my-5">
+            <div className="container p-0">
                 <div className="addnote">
-                <h2>Add a Note</h2>
+                <h2 className="addnoteHead">Add a Note</h2>
                 <form>
                     <div className="mb-3">
                         <label htmlFor="title" className="form-label">Title</label>

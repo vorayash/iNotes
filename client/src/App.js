@@ -15,6 +15,7 @@ import Login from './components/Login';
 import alertContext from './context/alert/alertContext';
 import AlertState from './context/alert/AlertState';
 import Sweetalertdemo from './components/Sweetalertdemo';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
             </Routes>
     </div>
         </Router>
+        <Footer/>
       </NoteState>
     </AlertState>
     </>
