@@ -25,16 +25,21 @@ const AddNote = () => {
                     <div className="mb-3">
                         <label htmlFor="title" className="form-label">Title</label>
                         <input type="text" className="form-control" value={note.title} id="title" name="title" aria-describedby="emailHelp" onChange={onChangeHandler} />
+                    <div id="emailHelp" className="form-text">Minimum length 5</div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="description" className="form-label">Description</label>
                         <input type="text" className="form-control" id="description" value={note.description} name="description" onChange={onChangeHandler}/>
+                    <div id="emailHelp" className="form-text">Minimum length 5</div>
+
                     </div>
                     <div className="mb-3">
                         <label htmlFor="tag" className="form-label">Tag</label>
-                        <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChangeHandler}/>
+                        <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChangeHandler} maxLength={10}/>
+                    <div id="emailHelp" className="form-text">Maximum length 10</div>
+
                     </div>
-                    <button disabled={(note.title.length<=5||note.description.length<=4)} type="submit" className="btn btn-primary" onClick={onClickHandler}>Submit</button>
+                    <button disabled={(note.title.length<=5||note.description.length<=4)} type="submit" className="btn btn-primary" onClick={onClickHandler}>Add Note</button>
                 </form>
             </div>
             </div>

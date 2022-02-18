@@ -8,6 +8,8 @@ var style = {
     bottom: "0",
     height: "60px",
     width: "100%",
+    fontWeight:"400px",
+    letterSpacing : "1px"
 }
 
 var phantom = {

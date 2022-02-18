@@ -1,0 +1,15 @@
+i:hover{
+    color: black !important ;
+    
+}
+i{
+    padding: 5px 20px !important;
+}
+
+.card{
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 5%);
+  }
+
+  .date{
+      font-size: smaller;
+  }
