@@ -29,7 +29,7 @@ const Noteitem = (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{note.title}</h5>
                     <p className="card-text">{note.description}</p>
-                    <div className="card-footer pt-3 pl-0">
+                    <div className="card-footer bg-white pt-3 pl-0">
 
                     <i className="btn btn-outline-danger far fa-trash-alt mr-2 ml-0 d-inline" style={{ color: "red" }} onClick={() => { deleteNote(note._id) }}></i>
                     <i className="btn btn-outline-info far fa-edit d-inline mr-2" style={{ color: "#0dcaf0" }} onClick={() => modalOpen(note)}></i>
