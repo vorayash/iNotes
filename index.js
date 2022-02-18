@@ -18,6 +18,8 @@ app.use(express.json())
 //Available routes
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
+app.use('/api/contact', require('./routes/contact'))
+
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static( 'client/build' ));

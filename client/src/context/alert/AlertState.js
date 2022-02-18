@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const AlertState = (props) => {
     const [alert, setAlert] = useState(null);
-    const showAlert = (message, alertType) => {
+    const showAlert = () => {
         
       Swal.showLoading()
     }

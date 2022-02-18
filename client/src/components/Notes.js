@@ -5,15 +5,18 @@ import AddNote from './AddNote';
 import Noteitem from './Noteitem';
 
 
+
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
   const navigate = useNavigate();
+  const { setUser } = useContext(noteContext);
   
  
   useEffect(() => {
     if (localStorage.getItem('token')) {
       getNotes();
+      setUser(localStorage.getItem('token'));
     }
     else {
       navigate('/login')

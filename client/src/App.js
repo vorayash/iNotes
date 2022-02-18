@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Navbar from './components/Navbar';
 import { Home } from './components/Home';
-import About from './components/About';
+import About from './components/ContactUs';
 import NoteState from './context/notes/NoteState';
 import Alert from './components/Alert';
 import Signup from './components/Signup';

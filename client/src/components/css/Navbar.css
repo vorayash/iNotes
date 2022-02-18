@@ -4,9 +4,14 @@ nav{
     border-radius: 10px;
     box-shadow: 0 4px 12px 0 rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 5%);
     padding-top: 0.5625rem;
-    background-color: rgba(251,251,251)!important;
+    background-color: rgb(255, 255, 255);
     margin-top: 10px;
     padding: 0px 10px;
+}
+.bg-light{
+    background-color: white;
+    --bs-bg-opacity: 5;
+
 }
 
 .link{

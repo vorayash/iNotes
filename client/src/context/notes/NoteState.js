@@ -11,6 +11,11 @@ const NoteState = (props) => {
     const context=useContext(alertContext);
     const {showAlert,alertClose} =context;
 
+    //user details 
+    // const user = {name:"",email:""}
+    
+    const [user, setUserState] = useState({name:'',email:''});
+    
     const [notes, setNotes] = useState(notesInitial);
     //Get all notes
     const getNotes = async () => {
@@ -88,8 +93,28 @@ const NoteState = (props) => {
         alertClose("Edited Successfully","success");
 
     }
+    //set user
+    const setUser =async(authtoken)=>{
+        // setUserState({name:);
+        const response = await fetch(`${host}/api/auth/getuser/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token':authtoken
+            }
+        });
+        const  json=await response.json(); 
+        let user ={name:json.name,email:json.email};
+        setUserState(user);
+        setTimeout(() => {
+            
+            console.log(user);
+        }, 1000);
+        
+    }
+    
     return (
-        <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
+        <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes,user, setUser }}>
             {props.children}
         </NoteContext.Provider>
     )

@@ -3,11 +3,13 @@ import './css/Navbar.css';
 import { Link, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import alertContext from '../context/alert/alertContext';
+import noteContext from '../context/notes/noteContext'
 
 
 const Navbar = () => {
     const context = useContext(alertContext);
     const { showAlert, alertClose } = context;
+    const {user} = useContext(noteContext);
     let navigate = useNavigate();
     const logoutHandler = () => {
         showAlert();
@@ -40,13 +42,18 @@ const Navbar = () => {
                             <Link className="link mx-1" to="/Login" role="button">Login</Link><span className="seperator">&#160; | &#160;</span>
                             <Link className="link mx-1" to="/Signup" role="button">Sign Up</Link>
                         </> :
-                            <><div className="dropdown">
-                                <i className="fas fa-user-circle fa-2x" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </i>
-                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a className="dropdown-item" onClick={logoutHandler}>Logout</a>
+
+                            <>
+                                <div className="btn-group">
+                                    <div type="button" className=" dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <i className="fas fa-user-circle fa-2x"></i>
+                                    </div>
+                                    <ul className="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
+                                        <li><span className="dropdown-item" >Name: {user.name} </span></li>
+                                        <li><span className="dropdown-item" >Email: {user.email}</span></li>
+                                        <li><button className="dropdown-item" type="button" onClick={logoutHandler}><b>Logout</b></button></li>
+                                    </ul>
                                 </div>
-                            </div>
                             </>
                         }
                     </div>
