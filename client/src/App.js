@@ -9,46 +9,44 @@ import Navbar from './components/Navbar';
 import { Home } from './components/Home';
 import About from './components/ContactUs';
 import NoteState from './context/notes/NoteState';
-import Alert from './components/Alert';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import alertContext from './context/alert/alertContext';
 import AlertState from './context/alert/AlertState';
-import Sweetalertdemo from './components/Sweetalertdemo';
 import Footer from './components/Footer';
+import ForgotPass from './components/ForgotPass';
+import ResetPass from './components/ResetPass';
 
 function App() {
-
-
-
   window.onunload = () => {
-    if ( document.cookie === 'false' ) {
+    if (document.cookie === 'false') {
       localStorage.removeItem('token');
     }
   };
-
+  
 
   return (
     <>
-    <AlertState>
-      <NoteState>
-        <Router>
-          <Navbar/>
-    <div className="container">
-          {/* <Alert/> */}
-            <Routes>
-              <Route exact path="/About" element={<About />} />
-              <Route exact path="/Login" element={<Login />} />
-              <Route exact path="/Signup" element={<Signup />} />
-              <Route exact path="/" element={<Home />} />
-            </Routes>
-    </div>
-        </Router>
-        <Footer/>
-      </NoteState>
-    </AlertState>
+      <AlertState>
+        <NoteState>
+          <Router>
+            <Navbar />
+            <div className="container">
+              
+              <Routes>
+                <Route exact path="/About" element={<About />} />
+                <Route exact path="/Login" element={<Login />} />
+                <Route exact path="/Signup" element={<Signup />} />
+                <Route exact path="/ForgotPass" element={<ForgotPass />} />
+                <Route exact path="/ResetPass" element={<ResetPass />} />
+                <Route exact path="/" element={<Home />} />
+              </Routes>
+            </div>
+          </Router>
+          <Footer />
+        </NoteState>
+      </AlertState>
     </>
-  );
+  )
 }
 
 export default App;

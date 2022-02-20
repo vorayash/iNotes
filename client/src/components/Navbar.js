@@ -38,12 +38,12 @@ const Navbar = () => {
                                 <Link className={`nav-link ${location.pathname === "/About" ? "active" : ""}`} to="/About">Contact Us</Link>
                             </li>
                         </ul>
-                        {!localStorage.getItem('token') ? <>
+                        {!localStorage.getItem('token') ? (<>
                             <Link className="link mx-1" to="/Login" role="button">Login</Link><span className="seperator">&#160; | &#160;</span>
                             <Link className="link mx-1" to="/Signup" role="button">Sign Up</Link>
-                        </> :
+                        </> ):
 
-                            <>
+                           ( <>
                                 <div className="btn-group">
                                     <div type="button" className=" dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     <i className="fas fa-user-circle fa-2x" ></i>
@@ -54,13 +54,13 @@ const Navbar = () => {
                                         <li><button className="dropdown-item" type="button" onClick={logoutHandler}><b>Logout</b></button></li>
                                     </ul>
                                 </div>
-                            </>
+                            </>)
                         }
                     </div>
                 </div>
             </nav>
         </div>
-    <div div className="my-4 d-inline-block"> </div>
+        <div className="my-4 d-inline-block"> </div>
         
         </>
 

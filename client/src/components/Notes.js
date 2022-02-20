@@ -36,7 +36,6 @@ const Notes = () => {
   }
   const modalOpen = (currentNote) => {
     ref.current.click();
-    console.log("hiii");
     setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
 
   }

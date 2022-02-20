@@ -7,11 +7,10 @@ import './css/login.css'
 
 
 const Signup = () => {
-  // const host = "http://localhost:5000"
-  const host = "https://inotebookvorayash.herokuapp.com"
-  const [credential, setCredential] = useState({ name: "", email: "", password: "", cpassword: "" });
+  const host = "http://localhost:5000"
+  // const host = "https://inotebookvorayash.herokuapp.com"
+  const [credential, setCredential] = useState({ name: "", email: "", phone: "", password: "", cpassword: "" });
   const [ischeck, setIscheck] = useState(false);
-
 
   let navigate = useNavigate();
   const context = useContext(alertContext);
@@ -21,7 +20,7 @@ const Signup = () => {
     setCredential({ ...credential, [e.target.name]: e.target.value })
     setIscheck(e.target.checked)
   }
-  const { name, email, password } = credential;
+  const { name, email, phone, password } = credential;
 
   const handleSubmit = async (e) => {
     showAlert();
@@ -35,7 +34,7 @@ const Signup = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, email, password })
+      body: JSON.stringify({ name, email, phone, password })
     });
     const json = await response.json();
     if (json.success) {
@@ -64,6 +63,11 @@ const Signup = () => {
                 <label htmlFor="email" className="form-label">Email address</label>
                 <input type="email" className="form-control" id="email" name="email" minLength={5} required onChange={onChangeHandler} aria-describedby="emailHelp" />
                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="phone" className="form-label">Phone Number</label>
+                <input type="tel" className="form-control" id="phone" name="phone" minLength={5} required onChange={onChangeHandler} aria-describedby="phoneHelp" />
+                <div id="phoneHelp" className="form-text">We'll never share your email with anyone else.</div>
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">Password</label>

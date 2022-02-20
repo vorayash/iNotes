@@ -1,15 +1,20 @@
-import { useState } from "react";
 import AlertContext from "./alertContext";
 import Swal from 'sweetalert2';
+import { useState } from "react";
 
 
 const AlertState = (props) => {
-    const [alert, setAlert] = useState(null);
+    const [phone, setPhone] = useState(null);
     const showAlert = () => {
         
       Swal.showLoading()
     }
     const alertClose = (message, alertType)=>{
+        if(!message)
+        {
+        Swal.close()
+            return;
+        }
         Swal.close()
         Swal.fire({
             // position: 'top-end',
@@ -22,7 +27,7 @@ const AlertState = (props) => {
     }
 
     return (
-        <AlertContext.Provider value={{ showAlert, alert,alertClose }}>
+        <AlertContext.Provider value={{ showAlert,alertClose,phone,setPhone }}>
             {props.children}
         </AlertContext.Provider>
     )

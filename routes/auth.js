@@ -13,6 +13,7 @@ const JWT_SECRET ="Yashisagoodboy";
 router.post('/createuser', [
     body('name', 'Enter a valid name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
+    body('phone', 'Enter a valid phone').isLength({min:10}),
     body('password', 'Password must be atleast 5 characters').isLength({ min: 5 })
 ], async (req, res) => {
     //If there are errors, return bad request and the errors
@@ -24,10 +25,11 @@ router.post('/createuser', [
     let success=false;
     try {
 
-        let user = await User.findOne({ email: req.body.email });
+        // let user = await User.findOne({ email: req.body.email });
+        let user = await User.findOne({ $or: [ { email: req.body.email }, { phone: req.body.phone }] });
         if (user) {
             success=false;
-            return res.status(400).json({success, error: "Sorry a user with this email already exists" })
+            return res.status(400).json({success, error: "Sorry a user with this email or phone already exists" })
         }
         const salt = await bcrypt.genSalt(10);
         const secPass = await bcrypt.hash(req.body.password, salt);
@@ -35,6 +37,7 @@ router.post('/createuser', [
         user = await User.create({
             name: req.body.name,
             email: req.body.email,
+            phone: req.body.phone,
             password: secPass,
         })
         const data = {
@@ -117,8 +120,50 @@ router.post('/getuser',fetchuser, async (req, res) => {
 })
 
 
+//ROUTE 4: reset password using POST "/api/auth/resetpass". 
 
 
+router.post('/resetcheck', async (req, res) => {
+    
+    let success=false;
+    try {
+        // let user = await User.findOne({ email: req.body.email });
+        let user = await User.findOne({ phone: req.body.phone });
+        if (!user) {
+            success=false;
+            return res.status(400).json({success, error: "Sorry no account is associated with this mobile number." })
+        }
+        success=true;
+        res.json({success});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal server error");
+    }
+
+
+})
+router.post('/resetpass', async (req, res) => {
+    
+    let success=false;
+    try {
+        // let user = await User.findOne({ email: req.body.email });        
+        const salt = await bcrypt.genSalt(10);
+        const secPass = await bcrypt.hash(req.body.password, salt);
+        console.log(req.body.password);
+        console.log(req.body.phone);
+        console.log(secPass);
+        password = await User.findOneAndUpdate({phone:req.body.phone},{password:secPass})
+        console.log(password);
+        success=true;
+        res.json({success});
+        
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send({error});
+    }
+
+
+})
 
 
 module.exports = router

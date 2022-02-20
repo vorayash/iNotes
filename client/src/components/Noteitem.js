@@ -7,21 +7,8 @@ const Noteitem = (props) => {
 
     const { note, modalOpen } = props;
     const d = new Date(note.date);
-    console.log(d.toLocaleDateString());
-    console.log(d.toTimeString());
-    // console.log(note.date);
     return (
         <div className="col-md-3 my-3">
-            {/* <div className="card">
-                <div className="card-body">
-                    <div className="">
-                        <h5 className="card-title d-inline mr-2">{note.title}</h5>
-                        <i className="far fa-trash-alt mx-2 d-inline" style={{color:"red"}} onClick={()=>{deleteNote(note._id)}}></i>
-                        <i className="far fa-edit mx-2 d-inline" style={{color:"green"}} onClick={()=>modalOpen(note)}></i>
-                    </div>
-                    <p className="card-text">{note.description}</p>
-                </div>
-            </div> */}
             <div className="card h-100">
                 <div className="card-header text-left">
                     {note.tag}

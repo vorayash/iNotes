@@ -106,10 +106,6 @@ const NoteState = (props) => {
         const  json=await response.json(); 
         let user ={name:json.name,email:json.email};
         setUserState(user);
-        setTimeout(() => {
-            
-            console.log(user);
-        }, 1000);
         
     }
     

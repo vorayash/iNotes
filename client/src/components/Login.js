@@ -1,19 +1,22 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import alertContext from '../context/alert/alertContext';
 import './css/login.css'
 import bg from './animated.svg'
 
 
 const Login = () => {
-    // const host = "http://localhost:5000"
-    const host = "https://inotebookvorayash.herokuapp.com"
+    const host = "http://localhost:5000"
+    // const host = "https://inotebookvorayash.herokuapp.com"
     const [credential, setCredential] = useState({ email: "", password: "" });
     const [ischeck, setIscheck] = useState(false);
     let navigate = useNavigate();
-    const { showAlert, alertClose } = useContext(alertContext);
-    
+   
+    const { showAlert, alertClose, setPhone } = useContext(alertContext);
 
+    useEffect(()=>{
+        setPhone(null);
+    })
 
     const onChangeHandler = (e) => {
         setCredential({ ...credential, [e.target.name]: e.target.value })
@@ -24,8 +27,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        showAlert();
-        
+        showAlert();       
 
         const response = await fetch(`${host}/api/auth/login`, {
             method: 'POST',
@@ -64,16 +66,19 @@ const Login = () => {
                             <h2>Login to iNotebook</h2>
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Email address</label>
-                                <input type="email" className="form-control" id="email" name="email" onChange={onChangeHandler} aria-describedby="emailHelp" required />
+                                <input type="email" className="form-control" id="email" name="email" onChange={onChangeHandler} aria-describedby="emailHelp" required={true} />
                                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="password" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="password" name="password" autoComplete="false" onChange={onChangeHandler} required />
+                                <input type="password" className="form-control" id="password" name="password" autoComplete="false" onChange={onChangeHandler} required={true} />
                             </div>
                             <div className="form-check mb-3">
                                 <input type="checkbox" className="form-check-input" id="rememberMe" name="rememberMe" onChange={onChangeHandlerCheck} checked={ischeck} />
                                 <label className="form-check-label" htmlFor="rememberMe" >Remember me</label>
+                            </div>
+                            <div className="mb-3">
+                            <Link to="/ForgotPass" className="">Forgot password?</Link>
                             </div>
 
                             <button type="submit" className="btn btn-primary">Submit</button>

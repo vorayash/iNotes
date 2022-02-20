@@ -16,7 +16,6 @@ const ContactUs = () => {
     e.preventDefault();
     showAlert();
     const {name, phone,email,message,city,state } =information;
-    console.log(information);
       const response = await fetch(`${host}/api/contact/contactus`, {
           method: 'POST',
           headers: {
@@ -31,7 +30,6 @@ const ContactUs = () => {
           
       }
       else {
-        console.log(json);
           alertClose(json.error, "danger");
 
       }
