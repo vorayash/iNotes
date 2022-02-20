@@ -7,8 +7,8 @@ import './css/login.css'
 
 
 const Signup = () => {
-  const host = "http://localhost:5000"
-  // const host = "https://inotebookvorayash.herokuapp.com"
+  // const host = "http://localhost:5000"
+  const host = "https://inotebookvorayash.herokuapp.com"
   const [credential, setCredential] = useState({ name: "", email: "", phone: "", password: "", cpassword: "" });
   const [ischeck, setIscheck] = useState(false);
 

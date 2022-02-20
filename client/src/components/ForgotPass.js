@@ -72,8 +72,8 @@ const ForgotPass = () => {
   if (user) {
     showAlert();
     firebase.auth().signOut().then(function () {}, function () { });
-    const host = "http://localhost:5000"
-    // const host = "https://inotebookvorayash.herokuapp.com"
+    // const host = "http://localhost:5000"
+    const host = "https://inotebookvorayash.herokuapp.com"
 
     const response = fetch(`${host}/api/auth/resetcheck`, {
       method: 'POST',

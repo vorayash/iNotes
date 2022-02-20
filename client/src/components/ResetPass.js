@@ -10,8 +10,8 @@ const ResetPass = () => {
          navigate("/Login");
         }})
 
-    const host = "http://localhost:5000"
-    // const host = "https://inotebookvorayash.herokuapp.com"
+    // const host = "http://localhost:5000"
+    const host = "https://inotebookvorayash.herokuapp.com"
     const [credential, setCredential] = useState({ password: "", cpassword: "" });
     const { showAlert, alertClose,phone, setPhone } = useContext(alertContext);
     
