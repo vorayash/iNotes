@@ -15,6 +15,7 @@ import AlertState from './context/alert/AlertState';
 import Footer from './components/Footer';
 import ForgotPass from './components/ForgotPass';
 import ResetPass from './components/ResetPass';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   window.onunload = () => {
@@ -31,14 +32,14 @@ function App() {
           <Router>
             <Navbar />
             <div className="container">
-              
               <Routes>
+               <Route exact path="/" element={<Home />} />
                 <Route exact path="/About" element={<About />} />
                 <Route exact path="/Login" element={<Login />} />
                 <Route exact path="/Signup" element={<Signup />} />
                 <Route exact path="/ForgotPass" element={<ForgotPass />} />
                 <Route exact path="/ResetPass" element={<ResetPass />} />
-                <Route exact path="/" element={<Home />} />
+                <Route path="/*" element={<PageNotFound />} />
               </Routes>
             </div>
           </Router>

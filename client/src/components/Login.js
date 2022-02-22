@@ -6,8 +6,10 @@ import bg from './animated.svg'
 
 
 const Login = () => {
-    // const host = "http://localhost:5000"
-    const host = "https://inotebookvorayash.herokuapp.com"
+    
+    //getting host address from environment variable
+    const host = process.env.REACT_APP_HOST
+    
     const [credential, setCredential] = useState({ email: "", password: "" });
     const [ischeck, setIscheck] = useState(false);
     let navigate = useNavigate();

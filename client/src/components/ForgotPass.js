@@ -16,6 +16,7 @@ const config = {
 };
 
 
+
 // Configure FirebaseUI.
 const uiConfig = {
 
@@ -72,8 +73,8 @@ const ForgotPass = () => {
   if (user) {
     showAlert();
     firebase.auth().signOut().then(function () {}, function () { });
-    // const host = "http://localhost:5000"
-    const host = "https://inotebookvorayash.herokuapp.com"
+    //getting host address from environment variable
+    const host = process.env.REACT_APP_HOST
 
     const response = fetch(`${host}/api/auth/resetcheck`, {
       method: 'POST',

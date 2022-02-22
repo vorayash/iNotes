@@ -11,7 +11,7 @@ router.post('/contactus', async (req, res) => {
                 name: req.body.name,
                 phone: req.body.phone,
                 email: req.body.email,
-                message: req.body.name,
+                message: req.body.message,
                 city: req.body.city,
                 state: req.body.state
               

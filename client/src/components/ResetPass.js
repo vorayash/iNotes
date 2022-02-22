@@ -10,8 +10,9 @@ const ResetPass = () => {
          navigate("/Login");
         }})
 
-    // const host = "http://localhost:5000"
-    const host = "https://inotebookvorayash.herokuapp.com"
+    //getting host address from environment variable
+    const host = process.env.REACT_APP_HOST
+    
     const [credential, setCredential] = useState({ password: "", cpassword: "" });
     const { showAlert, alertClose,phone, setPhone } = useContext(alertContext);
     

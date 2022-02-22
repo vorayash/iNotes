@@ -6,7 +6,6 @@ const Footer=()=>{
         borderTop: "1px solid #E7E7E7",
         textAlign: "center",
         padding: "20px",
-        position: "fixed",
         left: "0",
         bottom: "0",
         height: "60px",
@@ -24,8 +23,6 @@ const Footer=()=>{
     return (
         <>
         <div >
-            <div className="my-4 d-inline-block"> </div>
-
             <div style={phantom} />
             <div style={style}>
                 

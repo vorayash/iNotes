@@ -4,7 +4,8 @@ import { Link, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import alertContext from '../context/alert/alertContext';
 import noteContext from '../context/notes/noteContext'
-
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Navbar = () => {
     const context = useContext(alertContext);
@@ -51,7 +52,7 @@ const Navbar = () => {
                                     <ul className="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
                                         <li><span className="dropdown-item" >Name: {user.name} </span></li>
                                         <li><span className="dropdown-item" >Email: {user.email}</span></li>
-                                        <li><button className="dropdown-item" type="button" onClick={logoutHandler}><b>Logout</b></button></li>
+                                        <li><button className="dropdown-item" type="button" onClick={logoutHandler}><b><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</b></button></li>
                                     </ul>
                                 </div>
                             </>)
@@ -60,8 +61,9 @@ const Navbar = () => {
                 </div>
             </nav>
         </div>
-        <div className="my-4 d-inline-block"> </div>
         
+        
+        <div className="my-4 d-inline-block"> </div>
         </>
 
     )

@@ -29,17 +29,3 @@ export default function Alert() {
     )
 }
 
-// Swal.fire({
-//     title: 'Wait ...',
-//     onBeforeOpen () {
-//       Swal.showLoading ()
-//     },
-//     onAfterClose () {
-//       Swal.hideLoading()
-//     },
-//     allowOutsideClick: false,
-//     allowEscapeKey: false,
-//     allowEnterKey: false
-//   })
-// //   myFunc()
-//   Swal.close()

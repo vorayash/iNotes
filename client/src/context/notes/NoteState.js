@@ -4,8 +4,9 @@ import NoteContext from "./noteContext";
 
 
 const NoteState = (props) => {
-    // const host = "http://localhost:5000"
-    const host = "https://inotebookvorayash.herokuapp.com"
+    //getting host address from environment variable
+    const host = process.env.REACT_APP_HOST
+    
     const notesInitial = []
     
     const context=useContext(alertContext);
