@@ -15,7 +15,7 @@ node_modules
 
 # # misc
 # .DS_Store
-/client/.env
+.env
 # .env.development.local
 # .env.test.local
 # .env.production.local
