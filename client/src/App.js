@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useContext } from 'react'
+import React from 'react'
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,7 +14,6 @@ import Login from './components/Login';
 import AlertState from './context/alert/AlertState';
 import Footer from './components/Footer';
 import ForgotPass from './components/ForgotPass';
-import ResetPass from './components/ResetPass';
 import PageNotFound from './components/PageNotFound';
 
 function App() {
@@ -38,7 +37,6 @@ function App() {
                 <Route exact path="/Login" element={<Login />} />
                 <Route exact path="/Signup" element={<Signup />} />
                 <Route exact path="/ForgotPass" element={<ForgotPass />} />
-                <Route exact path="/ResetPass" element={<ResetPass />} />
                 <Route path="/*" element={<PageNotFound />} />
               </Routes>
             </div>

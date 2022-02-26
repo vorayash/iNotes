@@ -26,7 +26,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     showAlert();
     e.preventDefault();
-    if (credential.password != credential.cpassword) {
+    if (credential.password !== credential.cpassword) {
       alertClose("Password and Confirm password does not match!", "danger");
       return;
     }

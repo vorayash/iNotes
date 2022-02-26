@@ -1,118 +1,128 @@
-import React, {  useContext, useEffect, useState } from "react";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import * as firebase from "firebase";
-import { useNavigate } from "react-router";
-import alertContext from "../context/alert/alertContext";
-// import * as firebase from 'firebase/app';
-
-// Configure Firebase.
-const config = {
-  apiKey: "AIzaSyCMSCUXiUdbF6cUlAYfEE1vvF5DL9EaxQE",
-  authDomain: "fir-inotebook.firebaseapp.com",
-  projectId: "fir-inotebook",
-  storageBucket: "fir-inotebook.appspot.com",
-  messagingSenderId: "835698285997",
-  appId: "1:835698285997:web:f2e8541cb9442c84e79524"
-};
-
-
-
-// Configure FirebaseUI.
-const uiConfig = {
-
-  // Popup signin flow rather than redirect flow.
-  signInFlow: "popup",
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: "/ResetPass",
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    {
-      provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-
-      defaultCountry: "IN", // Set default country to the United Kingdom (+44).
-
-      defaultNationalNumber: "1234567890",
-
-      loginHint: "+911234567890",
-
-      whitelistedCountries: ["IN", "+91","Us","+1"]
-    }
-  ],
-  callbacks: {
-    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-      console.log("succwssfully signed in");
-      // console.log("succwssfully signed in", authResult)
-      // firebase.auth().signOut().then(function() {
-      //   console.log('Signed Out');
-      // }, function(error) {
-      //   console.error('Sign Out Error', error);
-      // });
-    }
-  }
-};
-
-firebase.initializeApp(config);
+import React, { useContext, useEffect, useState } from 'react'
+import ReCAPTCHA from "react-google-recaptcha";
+import alertContext from '../context/alert/alertContext';
+import $ from 'jquery';
+import { useNavigate } from 'react-router';
+import './css/login.css'
 
 const ForgotPass = () => {
-  const { showAlert, alertClose,setPhone,phone } = useContext(alertContext);
+  const host = process.env.REACT_APP_HOST
+
+  const [verified, setVerified] = useState();
+  const [credential, setCredential] = useState({ email: "", otp: "", password: "", cpassword: "" });
+
+  const [sent, setSent] = useState(false);
+  const { showAlert, alertClose } = useContext(alertContext);
   let navigate = useNavigate();
-  const [user, setUser] = useState(null);
+
   useEffect(() => {
-    const authObserver = firebase.auth().onAuthStateChanged(
-      (usernew) =>{
-        if(usernew){
-          let phoneNumber = usernew.phoneNumber;
-          setPhone(phoneNumber.substr(-10));
-        } 
-        setUser(usernew)
-      } 
-      );
-    return authObserver;
-  });
+    if (sent === false) {
+      $(".second").addClass("d-none");
+    }
+    else {
+      $(".second").removeClass("d-none");
+      $(".first").addClass("d-none");
+    }
+  })
 
-  if (user) {
+  const onChangeHandler = (e) => {
+    setCredential({ ...credential, [e.target.name]: e.target.value })
+  }
+
+  var onChange = (value) => {
+    if (value != null) {
+      setVerified(true);
+    }
+  };
+
+  const onSubmitHandler1 = async (e) => {
+    e.preventDefault();
     showAlert();
-    firebase.auth().signOut().then(function () {}, function () { });
-    //getting host address from environment variable
-    const host = process.env.REACT_APP_HOST
+    if (verified) {
+      const response = await fetch(`${host}/api/auth/sendotp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: credential.email })
+      });
+      const json = await response.json();
+      if (json.success) {
+        setSent(true);
+        alertClose(json.message, "success")
+      }
+      else {
+        alertClose(json.error, "danger")
+      }
+    }
 
-    const response = fetch(`${host}/api/auth/resetcheck`, {
+    else {
+      alertClose("Please verify you are a human!", "danger")
+    }
+  }
+
+  const onSubmitHandler2 = async (e) => {
+    e.preventDefault();
+    showAlert();
+    if (credential.password !== credential.cpassword) {
+      alertClose("New Password and Confirm New password does not match!", "danger");
+      return;
+    }
+    const { otp, password, email } = credential;
+    const response = await fetch(`${host}/api/auth/resetpass`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ phone: phone })
-    }).then(response => response.json()).then(data => {
-      if (data.success) {
-        navigate("/ResetPass");
-        alertClose();
-      }
-      else {
-        alertClose(data.error,"danger");
-      }
-
+      body: JSON.stringify({ otp, password, email })
     });
-
-    return (
-      <>
-        hey yash you signed in
-        console.log("hey  yash you signed in");
-      </>
-    )
+    const json = await response.json();
+    if (json.success) {
+      alertClose(json.message,"success")
+      navigate("/");
+    }
+    else {
+      alertClose(json.error, "danger")
+    }
   }
-  else {
 
-    return (
-      <div>
-        <h1>Forgot Password</h1>
 
-        <StyledFirebaseAuth
-          uiConfig={uiConfig}
-          firebaseAuth={firebase.auth()}
+
+
+  return (
+    <div className="reset mx-auto" style={{width:"50%"}}>
+      <form className="first" method='post' onSubmit={onSubmitHandler1}>
+      <h2>Request OTP</h2>
+        <div className="form-group my-3">
+          <label htmlFor="email">Email address</label>
+          <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your email" required onChange={onChangeHandler} />
+        </div>
+        <ReCAPTCHA sitekey="6LejAJ4eAAAAAHHoFL5nXWQRQUXPeWARExUzEEqg"
+          onChange={onChange}
         />
-      </div>
-    )
-  }
+        <button type="submit" className="btn btn-primary my-3">Send OTP</button>
+      </form>
+      <form className="second" onSubmit={onSubmitHandler2}>
+      <h2>Set New Password</h2>
+        <div className="my-3">
+          <label htmlFor="password" className="form-label">Enter New Password</label>
+          <input type="password" className="form-control" id="password" name="password" autoComplete="false" onChange={onChangeHandler} minLength={5} required />
+          <small id="email" className="form-text text-muted">Password length must be atleast 5 characters long.</small>
+
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">Confirm New Password</label>
+          <input type="password" className="form-control" id="cpassword" name="cpassword" autoComplete="false" onChange={onChangeHandler} minLength={5} required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="otp" className="form-label">Enter OTP</label>
+          <input type="text" className="form-control" id="otp" name="otp" onChange={onChangeHandler} required />
+        </div>
+        <button type="submit" className="btn btn-primary">Reset Password</button>
+
+      </form>
+    </div>
+  )
 }
 
 export default ForgotPass
