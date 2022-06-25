@@ -1,7 +1,10 @@
-# Project Title
+# iNotes
+
+I have deployed this project on heroku. Link: https://inotebookvorayash.herokuapp.com/
 
 iNotes is project made with MERN.
 
+I have used env file which is not uploaded here so you will have to make your own env file.
 ---
 ## Requirements
 
