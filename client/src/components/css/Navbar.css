@@ -24,3 +24,12 @@
 .seperator{
     font-weight: bolder;
 }
+
+.fa-user-circle{
+    margin-right: -16px;
+    margin-left: -16px;
+}
+
+.dropdown-toggle{
+    margin:0px;
+}

@@ -3,7 +3,6 @@ const router = express.Router();
 const Contact = require('../models/Contact');
 
 
-//ROUTE 1:Get all the Notes using: GET "api/notes/getuser". Login required
 router.post('/contactus', async (req, res) => {
     let success=false;
         try {

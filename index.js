@@ -18,7 +18,7 @@ app.use(express.json())
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
 app.use('/api/contact', require('./routes/contact'))
-
+app.get('/',(req,res)=>{res.send("hii");})
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static( 'client/build' ));
