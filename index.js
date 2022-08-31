@@ -11,6 +11,8 @@ connectTomongo();
 const port = process.env.PORT|| 5000 //because on port 3000 react app will run
 app.use(express.json())
 
+console.log(process.env.NODE_ENV);
+
 // app.use(express.static("public"));
 
 
