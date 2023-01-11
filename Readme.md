@@ -2,6 +2,9 @@
 
 iNotes is project made with MERN Stack.
 
+## Demo
+https://github.com/vorayash/Temp-Gif/blob/main/Inotes.mov
+
 ---
 ## Requirements
 
