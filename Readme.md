@@ -11,11 +11,11 @@ https://user-images.githubusercontent.com/72155000/211793943-ce2ef8f5-068e-4be6-
 
 For development, you will only need Node.js and a node global package, Yarn, installed in your environement.
 
-## Environment Variables:
-NODEMAILER_EMAIL
-NODEMAILER_PASSWORD
-MONGO_USER
-MONGO_PASSWD
+## Environment Variables
+- NODEMAILER_EMAIL
+- NODEMAILER_PASSWORD
+- MONGO_USER
+- MONGO_PASSWD
 
 ### Node
 - #### Node installation on Windows
