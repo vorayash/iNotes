@@ -1,14 +1,17 @@
 # iNotes
 
-I have deployed this project on heroku. Link: https://inotebookvorayash.herokuapp.com/
+iNotes is project made with MERN Stack.
 
-iNotes is project made with MERN.
-
-I have used env file which is not uploaded here so you will have to make your own env file.
 ---
 ## Requirements
 
 For development, you will only need Node.js and a node global package, Yarn, installed in your environement.
+
+## Environment Variables:
+NODEMAILER_EMAIL
+NODEMAILER_PASSWORD
+MONGO_USER
+MONGO_PASSWD
 
 ### Node
 - #### Node installation on Windows
