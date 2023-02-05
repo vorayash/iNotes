@@ -140,13 +140,13 @@ router.post('/sendotp', async (req, res) => {
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'vorayash0716@gmail.com',
-                pass: 'Yash@12345'
+                user: process.env.NODEMAILER_EMAIL,
+                pass: process.env.NODEMAILER_PASSWORD
             }
         });
 
         let mailOptions = {
-            from: 'vorayash0716@gmail.com',
+            from: process.env.NODEMAILER_EMAIL,
             to: req.body.email,
             subject: 'iNotes Password Request Otp',
             text: `Your one time password is ${otp}`
