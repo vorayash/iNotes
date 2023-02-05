@@ -5,7 +5,8 @@ var cors = require('cors')
 var app = express()
 const path = require("path");
  
-process.env.NODE_ENV !== 'production' && app.use(cors());
+(process.env.NODE_ENV == 'production') ? app.use(cors()):app.use(cors({origin: 'https://63de7f3d625a8b27e6fd0f45--inotebookvorayash.netlify.app'}));
+
 
 connectTomongo();
 const port = process.env.PORT|| 5000 //because on port 3000 react app will run
