@@ -4,6 +4,8 @@ iNotes is project made with MERN Stack.
 
 ## Demo
 
+Live: https://inotebookvorayash.netlify.app/login
+
 https://user-images.githubusercontent.com/72155000/211793943-ce2ef8f5-068e-4be6-8c37-2617d70ad105.mov
 
 ---
