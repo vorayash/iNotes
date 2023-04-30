@@ -1,6 +1,7 @@
 # iNotes
 
-iNotes is project made with MERN Stack.
+iNotes is project made with MERN Stack.<br/>
+Link: https://644dda38cbc6c4040d1d0c8b--inotebookvorayash.netlify.app/
 
 ## Demo
 
