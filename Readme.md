@@ -5,7 +5,7 @@ Link: https://644dda38cbc6c4040d1d0c8b--inotebookvorayash.netlify.app/
 
 ## Demo
 
-Live: https://inotebookvorayash.netlify.app/login
+Live: https://inotebookvorayash.netlify.app/
 
 https://user-images.githubusercontent.com/72155000/211793943-ce2ef8f5-068e-4be6-8c37-2617d70ad105.mov
 
